@@ -1,0 +1,10 @@
+{
+    "master": {
+        "session_xsrf_token": "your_xsrf_token",
+        "session_sccauth": "your_sccauth_token"
+    },
+    "slave": {
+        "session_xsrf_token": "your_xsrf_token",
+        "session_sccauth": "your_sccauth_token"
+    }
+}
