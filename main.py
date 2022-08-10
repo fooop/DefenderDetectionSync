@@ -52,7 +52,7 @@ class Rule:
         self.MitreTechniques = rule_details['MitreTechniques']
         self.RecommendedAction = rule_details['RecommendedAction']
         self.RbacGroupIds = rule_details['RbacGroupIds']
-        self.IsEnabled = 1
+        self.IsEnabled = 0
         self.QueryText = get_rule_querytext(rule['Id'], auth)
         self.AlertDescription = rule_details['Description']
         self.AlertSeverity = rule_details['Severity']
