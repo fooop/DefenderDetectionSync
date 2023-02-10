@@ -3,8 +3,18 @@
         "session_xsrf_token": "your_xsrf_token",
         "session_sccauth": "your_sccauth_token"
     },
-    "slave": {
-        "session_xsrf_token": "your_xsrf_token",
-        "session_sccauth": "your_sccauth_token"
+    "slaves": {
+        "slave1": {
+            "session_xsrf_token": "your_xsrf_token",
+            "session_sccauth": "your_sccauth_token"
+        },
+        "slave2": {
+            "session_xsrf_token": "your_xsrf_token",
+            "session_sccauth": "your_sccauth_token"
+        },
+        "slave3": {
+            "session_xsrf_token": "your_xsrf_token",
+            "session_sccauth": "your_sccauth_token"
+        }
     }
 }

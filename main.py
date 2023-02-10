@@ -64,16 +64,16 @@ class Rule:
 with open("config.json", "r") as fh:
     auth = json.loads(fh.read())
     auth['master']['session_xsrf_token'] = auth['master']['session_xsrf_token'].replace('%3A', ":")
-    auth['slave']['session_xsrf_token'] = auth['slave']['session_xsrf_token'].replace('%3A', ":")
     all_rules = get_all_rules(auth=auth['master'])
 
     for rule in all_rules:
         print(f"[+] Transferring rule '{rule['Name']} ({rule['Id']})'")
         ruleObj = Rule(rule['Id'], auth=auth['master'])
-        response = push_rule(ruleObj, auth['slave'])
 
-        if not response.status_code == 201:
-            print(f"[!] Something went wrong! (Reponse code: {response.status_code} ({response.reason}))\n")
-        else:
-            print(f"[+] Success!\n")
-            
+        for slave in auth['slaves']:
+            auth['slaves'][slave]['session_xsrf_token'] = auth['slaves'][slave]['session_xsrf_token'].replace('%3A', ":")
+            response = push_rule(ruleObj, auth['slaves'][slave])
+            if not response.status_code == 201:
+                print(f"[!] Something went wrong with slave '{slave}' and rule '{rule['Name']}! (Reponse code: {response.status_code} ({response.reason}))\n")
+            else:
+                print(f"[+] Success with slave '{slave}' and rule '{rule['Name']}!\n")
